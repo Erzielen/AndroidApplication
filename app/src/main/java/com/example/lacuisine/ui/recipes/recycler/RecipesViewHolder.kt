@@ -1,6 +1,5 @@
 package com.example.lacuisine.ui.recipes.recycler
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +18,7 @@ class RecipesViewHolder(
 
     fun bindModelToView(recipe : Recipe){
         binding.recipeName.text = recipe.title
-        binding.recipeDescription.text=recipe.dishTypes.toString()
+        binding.recipeDescription.text=recipe.healthScore.toString()
         Glide.with(binding.root.context).load(recipe.image).into(binding.recipeImage)
     }
 }

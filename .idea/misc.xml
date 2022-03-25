@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.30446927374301674" />
-        <entry key="app/src/main/res/layout/item_row_recipes.xml" value="0.5485519591141397" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/ic_notifications.xml" value="0.1255" />
+        <entry key="app/src/main/res/drawable/ic_recipe.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/menu_item_background.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_recipes_category.xml" value="0.15462962962962962" />
+        <entry key="app/src/main/res/layout/fragment_typesof_recypes.xml" value="0.302536231884058" />
+        <entry key="app/src/main/res/layout/item_menu_recipes.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_row_recipes.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_types_recipes.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_bar_menu.xml" value="0.20185185185185187" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.37604166666666666" />
       </map>

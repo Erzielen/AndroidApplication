@@ -2,10 +2,13 @@
     <string name="app_name">La Cuisine</string>
     <string name="dish_name">AbcdefghiklmnopqrstuwxyzAbcdefghmnopqrstuvwxyz</string>
     <string name="dish_description">Dish description</string>
-<!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_menu">Search recipe</string>
     <string name="help_item">Help</string>
-    <string name="home">Home</string>
+    <string name="recipes">Recipes</string>
     <string name="Likes">Likes</string>
+    <string name="vegan">Vegan</string>
+    <string name="type_recipe">Type of recipe</string>
+    <string name="view_categories_recipes_container">View Categories</string>
+    <string name="view_all">View All</string>
 </resources>

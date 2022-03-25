@@ -3,7 +3,6 @@ package com.example.lacuisine.data
 data class RecipesAPIResponse (
     val recipes: List<Recipe>
 )
-
 data class Recipe (
     val vegetarian: Boolean,
     val vegan: Boolean,
@@ -16,11 +15,12 @@ data class Recipe (
     val weightWatcherSmartPoints: Long,
     val gaps: String,
     val lowFodmap: Boolean,
+    val preparationMinutes: Long,
+    val cookingMinutes: Long,
     val aggregateLikes: Long,
     val spoonacularScore: Long,
     val healthScore: Long,
     val creditsText: String,
-    val license: String,
     val sourceName: String,
     val pricePerServing: Double,
     val extendedIngredients: List<ExtendedIngredient>,
@@ -35,7 +35,7 @@ data class Recipe (
     val cuisines: List<Any?>,
     val dishTypes: List<String>,
     val diets: List<String>,
-    val occasions: List<String>,
+    val occasions: List<Any?>,
     val instructions: String,
     val analyzedInstructions: List<AnalyzedInstruction>,
     val originalID: Any? = null,
@@ -59,8 +59,7 @@ data class Ent (
     val id: Long,
     val name: String,
     val localizedName: String,
-    val image: String,
-    val temperature: Length? = null
+    val image: String
 )
 
 data class Length (
@@ -72,7 +71,7 @@ data class ExtendedIngredient (
     val id: Long,
     val aisle: String,
     val image: String,
-    val consistency: Consistency,
+    val consistency: String,
     val name: String,
     val nameClean: String,
     val original: String,
@@ -82,11 +81,6 @@ data class ExtendedIngredient (
     val meta: List<String>,
     val measures: Measures
 )
-
-enum class Consistency {
-    Liquid,
-    Solid
-}
 
 data class Measures (
     val us: Metric,

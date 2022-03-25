@@ -16,12 +16,12 @@ class RecipesViewModel @Inject constructor(
     val recipeState: StateFlow<RecipeState> by lazy { _recipeState }
 
     fun fetchRecipes() {
-        _recipeState.value= RecipeState.Loading
+        _recipeState.value = RecipeState.Loading
         viewModelScope.launch {
             try {
-                _recipeState.value= RecipeState.Success(recipeRepo.fetchRecipes().recipes)
-            }catch (e:Throwable){
-                _recipeState.value= RecipeState.Failure
+                _recipeState.value = RecipeState.Success(recipeRepo.fetchRecipes().recipes)
+            } catch (e: Throwable) {
+                _recipeState.value = RecipeState.Failure
             }
         }
     }

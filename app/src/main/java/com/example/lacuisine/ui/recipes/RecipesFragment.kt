@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.example.lacuisine.data.Recipe
 import com.example.lacuisine.databinding.FragmentRecipesBinding
 import com.example.lacuisine.ui.recipes.recycler.RecipesAdapter
+import com.example.lacuisine.ui.recipes.recyclermenu.MenuAdapter
 import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -29,12 +28,14 @@ class RecipesFragment : DaggerFragment() {
     }
 
     private val recipeAdapter by lazy { RecipesAdapter() }
+    private val menuAdapter by lazy { MenuAdapter() }
     private lateinit var binding: FragmentRecipesBinding
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        setupRecyclerView()
+        setupRecyclerViews()
         recipeViewModel.fetchRecipes()
     }
 
@@ -42,7 +43,7 @@ class RecipesFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRecipesBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -53,7 +54,7 @@ class RecipesFragment : DaggerFragment() {
 
     private fun observeViewModel() {
         lifecycleScope.launch {
-            recipeViewModel.recipeState.collectLatest { it ->
+            recipeViewModel.recipeState.collectLatest {
                 when (it) {
                     is RecipeState.None -> logThis("Nothing")
                     is RecipeState.Failure -> logThis("Failure Recipe Response")
@@ -64,10 +65,15 @@ class RecipesFragment : DaggerFragment() {
         }
     }
 
-    private fun setupRecyclerView() {
-        binding.recipeRecycler.apply {
-            adapter = recipeAdapter
-            layoutManager = LinearLayoutManager(context)
+    private fun setupRecyclerViews() {
+        binding.apply {
+            recipeRecycler.adapter = recipeAdapter
+            menuRecycler.adapter = menuAdapter
+            menuRecycler.layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
         }
     }
 
@@ -75,7 +81,4 @@ class RecipesFragment : DaggerFragment() {
         Log.d("Recipes Fragment", msg)
     }
 
-//    private fun displayRecipes(it: List<Recipe>) {
-//        recipeAdapter.addRecipe(it)
-//    }
 }
