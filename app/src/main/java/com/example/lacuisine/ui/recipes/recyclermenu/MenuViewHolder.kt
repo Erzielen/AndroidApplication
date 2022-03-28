@@ -1,9 +1,14 @@
 package com.example.lacuisine.ui.recipes.recyclermenu
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lacuisine.databinding.ItemMenuRecipesBinding
+
+interface FoodCategoryListener {
+    fun onFoodCategorySelected(tag: String?)
+}
 
 class MenuViewHolder(
     val parent: ViewGroup,
@@ -14,8 +19,15 @@ class MenuViewHolder(
     )
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bindModelToView(fakeMenuItem: String) {
-        binding.recipesTitleCategory.text = fakeMenuItem
+    fun bindModelToView(selectedFoodCategory: String, foodCategoryListener: FoodCategoryListener) {
+        binding.recipesTitleCategory.text = selectedFoodCategory
+        binding.root.setOnClickListener {
+            foodCategoryListener.onFoodCategorySelected(tag = it.toString())
+            Log.d(
+                "bindModelView: ",
+                "$it"
+            )
+        }
     }
 }
 

@@ -7,7 +7,6 @@ import com.example.lacuisine.repositories.RecipesRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -71,11 +70,11 @@ class RecipesRepositoryUnitTest {
     @Test
     fun testFetchAPIRecipesReturnsData() = runBlocking {
         //Given
-        coEvery { fakeRecipesAPI.getRecipes() } returns fakeRecipesCreated
+        coEvery { fakeRecipesAPI.getRandomRecipes() } returns fakeRecipesCreated
         //When
-        val response = repo.fetchRecipes()
+        val response = repo.fetchRecipesBy()
         //Then
         assert(response == fakeRecipesCreated)
-        coVerify { fakeRecipesAPI.getRecipes() }
+        coVerify { fakeRecipesAPI.getRandomRecipes() }
     }
 }

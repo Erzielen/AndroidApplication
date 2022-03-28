@@ -9,17 +9,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class RecipesViewModel @Inject constructor(
-    internal val recipeRepo: RecipesRepositoryContract
+    private val recipeRepo: RecipesRepositoryContract
 ) : ViewModel() {
 
     private val _recipeState: MutableStateFlow<RecipeState> = MutableStateFlow(RecipeState.None)
     val recipeState: StateFlow<RecipeState> by lazy { _recipeState }
 
-    fun fetchRecipes() {
+    fun fetchRecipesByTag(tag: String?) {
         _recipeState.value = RecipeState.Loading
         viewModelScope.launch {
             try {
-                _recipeState.value = RecipeState.Success(recipeRepo.fetchRecipes().recipes)
+                _recipeState.value = RecipeState.Success(recipeRepo.fetchRecipesByTag(tag).recipes)
             } catch (e: Throwable) {
                 _recipeState.value = RecipeState.Failure
             }

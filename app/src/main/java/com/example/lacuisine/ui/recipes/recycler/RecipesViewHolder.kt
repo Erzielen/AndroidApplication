@@ -18,7 +18,7 @@ class RecipesViewHolder(
 
     fun bindModelToView(recipe : Recipe){
         binding.recipeName.text = recipe.title
-        binding.recipeDescription.text=recipe.healthScore.toString()
+        binding.recipeDescription.text = recipe.healthScore.toString()
         Glide.with(binding.root.context).load(recipe.image).into(binding.recipeImage)
     }
 }
